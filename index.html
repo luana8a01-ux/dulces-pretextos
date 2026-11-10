@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulces Pretextos | Repostería Artesanal</title>
+    <style>
+        /* ==========================================
+           DULCES PRETEXTOS - ESTILOS PRINCIPALES
+           ========================================== */
+        :root {
+            --dp-crema: #FDFBF7;
+            --dp-beige: #F5EBE1;
+            --dp-chocolate: #4A3021;
+            --dp-rosa: #F2D5D5;
+            --dp-blanco: #FFFFFF;
+            --dp-dorado: #D4AF37;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--dp-chocolate);
+            background-color: var(--dp-crema);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        h1, h2, h3, .dp-logo {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-weight: normal;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVEGACIÓN */
+        .dp-nav {
+            background-color: var(--dp-blanco);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(74, 48, 33, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .dp-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dp-chocolate);
+            letter-spacing: 1px;
+        }
+
+        .dp-menu {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .dp-menu-item {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dp-menu-item:hover {
+            color: var(--dp-dorado);
+        }
+
+        /* BOTONES */
+        .dp-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+
+        .dp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 48, 33, 0.15);
+        }
+
+        .dp-btn-primary {
+            background-color: var(--dp-rosa);
+            color: var(--dp-chocolate);
+            border: 2px solid var(--dp-rosa);
+        }
+
+        .dp-btn-secondary {
+            background-color: transparent;
+            color: var(--dp-chocolate);
+            border: 2px solid var(--dp-chocolate);
+        }
+
+        .dp-btn-secondary:hover {
+            background-color: var(--dp-chocolate);
+            color: var(--dp-blanco);
+        }
+
+        /* SECCIONES GENÉRICAS */
+        .dp-section {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .dp-section-title {
+            font-size: 2.5rem;
+            color: var(--dp-chocolate);
+            margin-bottom: 1rem;
+        }
+
+        .dp-section-subtitle {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+            color: #666;
+        }
+
+        /* HERO */
+        .dp-hero {
+            position: relative;
+            background-image: linear-gradient(rgba(253, 251, 247, 0.85), rgba(253, 251, 247, 0.95)), url('https://images.unsplash.com/photo-1557308536-ee471ef2c390?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .dp-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dp-chocolate);
+        }
+
+        .dp-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .dp-hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* NOSOTROS */
+        .dp-about {
+            background-color: var(--dp-beige);
+        }
+
+        .dp-about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dp-card {
+            background-color: var(--dp-blanco);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(74, 48, 33, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dp-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(74, 48, 33, 0.1);
+        }
+
+        /* PRODUCTOS */
+        .dp-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .dp-product-card {
+            background-color: var(--dp-blanco);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(74, 48, 33, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dp-product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(74, 48, 33, 0.1);
+        }
+
+        .dp-product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .dp-product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .dp-product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dp-chocolate);
+        }
+
+        .dp-product-price {
+            font-weight: bold;
+            color: var(--dp-dorado);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .dp-product-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .dp-product-btn {
+            width: 100%;
+            display: block;
+        }
+
+        /* OTROS */
+        .dp-others {
+            background-color: var(--dp-rosa);
+        }
+        
+        .dp-others .dp-section-title {
+            color: var(--dp-chocolate);
+        }
+
+        .dp-others-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0 3rem 0;
+        }
+
+        .dp-others-list li {
+            background-color: var(--dp-blanco);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(74, 48, 33, 0.05);
+        }
+
+        /* TESTIMONIOS */
+        .dp-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .dp-stars {
+            color: var(--dp-dorado);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .dp-client-name {
+            font-weight: bold;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* CONTACTO / FORMULARIO */
+        .dp-contact {
+            background-color: var(--dp-beige);
+        }
+
+        .dp-form-container {
+            max-width: 650px;
+            margin: 2rem auto 0 auto;
+            background-color: var(--dp-blanco);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(74, 48, 33, 0.08);
+            text-align: left;
+        }
+
+        .dp-form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .dp-form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--dp-chocolate);
+        }
+
+        .dp-form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--dp-beige);
+            background-color: var(--dp-crema);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--dp-chocolate);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dp-form-control:focus {
+            outline: none;
+            border-color: var(--dp-chocolate);
+            box-shadow: 0 0 0 3px rgba(74, 48, 33, 0.1);
+        }
+
+        .dp-phone-display {
+            display: block;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dp-chocolate);
+        }
+
+        .dp-alert-success {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* FOOTER */
+        .dp-footer {
+            background-color: var(--dp-chocolate);
+            color: var(--dp-crema);
+            padding: 4rem 5% 2rem 5%;
+            text-align: center;
+        }
+
+        .dp-footer h2 {
+            color: var(--dp-rosa);
+            margin-bottom: 0.5rem;
+        }
+
+        .dp-footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .dp-footer-links .dp-menu-item:hover {
+            color: var(--dp-dorado);
+        }
+
+        .dp-footer-blog {
+            margin-top: 2rem;
+            display: inline-block;
+            color: var(--dp-dorado);
+            font-weight: bold;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .dp-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            .dp-hero h1 {
+                font-size: 2.5rem;
+            }
+            .dp-hero p {
+                font-size: 1rem;
+            }
+            .dp-section {
+                padding: 4rem 5%;
+            }
+            .dp-form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <nav class="dp-nav">
+        <div class="dp-logo">DULCES PRETEXTOS</div>
+        <div class="dp-menu">
+            <a href="#dp-inicio" class="dp-menu-item">Inicio</a>
+            <span>|</span>
+            <a href="#dp-nosotros" class="dp-menu-item">Nosotros</a>
+            <span>|</span>
+            <a href="#dp-productos" class="dp-menu-item">Productos</a>
+            <span>|</span>
+            <a href="https://sites.google.com/view/blog-dp/blog" target="_blank" class="dp-menu-item">Blog</a>
+            <span>|</span>
+            <a href="#dp-otros" class="dp-menu-item">Otros</a>
+            <span>|</span>
+            <a href="#dp-contacto" class="dp-menu-item">Contactar</a>
+        </div>
+    </nav>
+
+    <!-- INICIO / HERO -->
+    <header id="dp-inicio" class="dp-hero">
+        <h1>Siempre hay un pretexto para compartir</h1>
+        <p>Postres artesanales hechos para convertir cada momento en un detalle especial.</p>
+        <div class="dp-hero-buttons">
+            <a href="#dp-productos" class="dp-btn dp-btn-primary">Ver Productos</a>
+            <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20realizar%20un%20pedido." target="_blank" class="dp-btn dp-btn-secondary">Pedir por WhatsApp</a>
+        </div>
+    </header>
+
+    <!-- NOSOTROS -->
+    <section id="dp-nosotros" class="dp-section dp-about">
+        <h2 class="dp-section-title">Hecho para compartir</h2>
+        <p class="dp-section-subtitle">En Dulces Pretextos creemos que no necesitas una fecha especial para demostrarle a alguien que pensaste en él. Creamos postres artesanales y detalles personalizados para convertir cada momento en un pretexto para compartir, celebrar y expresar cariño.</p>
+        
+        <div class="dp-about-grid">
+            <div class="dp-card">
+                <h3>Misión</h3>
+                <p>Crear postres artesanales que permitan a nuestros clientes expresar cariño y celebrar momentos especiales mediante detalles personalizados, cuidando la calidad, la atención y la experiencia de cada pedido.</p>
+            </div>
+            <div class="dp-card">
+                <h3>Visión</h3>
+                <p>Ser una marca de repostería reconocida por transformar momentos cotidianos en experiencias especiales, convirtiendo cada postre en un detalle pensado para quien lo recibe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section id="dp-productos" class="dp-section">
+        <h2 class="dp-section-title">Nuestros productos</h2>
+        <p class="dp-section-subtitle">Elige el pretexto perfecto para hoy.</p>
+        
+        <div class="dp-products-grid">
+            
+            <!-- Producto 1: Mosaicos -->
+            <div class="dp-product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN4VMX9KYT0_cr2V3hP39Xs-V7Mpc0z6roy_ammfrYZsHFYQU7MBqiranb&s=10" alt="Mosaicos" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Mosaicos</h3>
+                    <div class="dp-product-price">S/ 5.00 / unidad</div>
+                    <p class="dp-product-desc">Un detalle clásico y delicioso, ideal para acompañar tus tardes o sorprender a alguien especial.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Mosaicos." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+            <!-- Producto 2: Brownies -->
+            <div class="dp-product-card">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Brownies" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Brownies</h3>
+                    <div class="dp-product-price">S/ 5.00 / unidad</div>
+                    <p class="dp-product-desc">Intenso sabor a chocolate con la textura perfecta. El pretexto ideal para los amantes del cacao.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Brownies." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+            <!-- Producto 3: Donas -->
+            <div class="dp-product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_RBGo2WjEMLoloF_LUTGd2nSwQf3FakdSzLN2sqIZ4A&s=10" alt="Donas" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Donas</h3>
+                    <div class="dp-product-price">S/ 3.00 / unidad</div>
+                    <p class="dp-product-desc">Suaves, esponjosas y decoradas artesanalmente. Perfectas para compartir o disfrutar a solas.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Donas." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+            <!-- Producto 4: Alfajores -->
+            <div class="dp-product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_UYjJTFFRpXQZPbsUev5pYWj1NSC_3QmYPxVGRYPsfIvpPYqZf8GASSQH&s=10" alt="Alfajores" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Alfajores</h3>
+                    <div class="dp-product-price">S/ 2.00 / unidad</div>
+                    <p class="dp-product-desc">Delicadas galletas rellenas de abundante manjar blanco. Un bocado lleno de tradición y cariño.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Alfajores." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+            <!-- Producto 5: Torta de chocolate -->
+            <div class="dp-product-card">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Torta de chocolate" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Torta de chocolate</h3>
+                    <div class="dp-product-price">S/ 5.00 / unidad</div>
+                    <p class="dp-product-desc">Húmeda, rellena y cubierta con nuestro fudge especial. La reina de cualquier celebración.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Torta%20de%20chocolate." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+            <!-- Producto 6: Chocotejas personalizadas -->
+            <div class="dp-product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs02QqtdWeZDCFyLv5TJMaDiy39PgzSJracErE7CutHg&s=10" alt="Chocotejas personalizadas" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Chocotejas personalizadas</h3>
+                    <div class="dp-product-price">S/ 2.00 / unidad</div>
+                    <p class="dp-product-desc">El detalle más elegante. Elaboradas a tu gusto para regalar un momento inolvidable.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Chocotejas%20personalizadas." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+            <!-- Producto 7: Piononos -->
+            <div class="dp-product-card">
+                <img src="https://acomer.pe/wp-content/uploads/2017/05/piononoweb.jpg" alt="Piononos" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Piononos</h3>
+                    <div class="dp-product-price">S/ 5.00 / unidad</div>
+                    <p class="dp-product-desc">Un rollo suave y esponjoso relleno de dulce cariño artesanal. Un clásico infaltable.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Piononos." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+            <!-- Producto 8: Mousse de maracuyá -->
+            <div class="dp-product-card">
+                <img src="https://recetinas.com/wp-content/uploads/2023/07/mousse-de-maracuya.jpg" alt="Mousse de maracuyá" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Mousse de maracuyá</h3>
+                    <div class="dp-product-price">S/ 5.00 / unidad</div>
+                    <p class="dp-product-desc">El equilibrio perfecto entre dulce y cítrico. Una textura ligera que te encantará.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Mousse%20de%20maracuy%C3%A1." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+            <!-- Producto 9: Mousse de mango -->
+            <div class="dp-product-card">
+                <img src="https://elmundoeats.es/wp-content/uploads/2018/05/Mango-Mousse-2.jpg" alt="Mousse de mango" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Mousse de mango</h3>
+                    <div class="dp-product-price">S/ 5.00 / unidad</div>
+                    <p class="dp-product-desc">Postre suave, fresco y tropical. Hecho con la mejor selección de fruta natural.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Mousse%20de%20mango." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+            <!-- Producto 10: Mousse de chirimoya -->
+            <div class="dp-product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtZpeazeYSECFyvQRK24WOhCcr_6cuVzbuY8gAwddPWaIZ_nVxV40GV1I&s=10" alt="Mousse de chirimoya" class="dp-product-img">
+                <div class="dp-product-info">
+                    <h3 class="dp-product-title">Mousse de chirimoya</h3>
+                    <div class="dp-product-price">S/ 5.00 / unidad</div>
+                    <p class="dp-product-desc">Nuestra receta especial y artesanal que captura el exquisito sabor de la chirimoya.</p>
+                    <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Quisiera%20pedir%20Mousse%20de%20chirimoya." target="_blank" class="dp-btn dp-btn-primary dp-product-btn">Pedir</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN OTROS -->
+    <section id="dp-otros" class="dp-section dp-others">
+        <h2 class="dp-section-title">¿Tienes otro pretexto?</h2>
+        <p class="dp-section-subtitle" style="color: var(--dp-chocolate);">No todos los momentos caben en un catálogo. Cuéntanos qué quieres celebrar, agradecer o simplemente compartir y podemos ayudarte a crear un detalle especial.</p>
+        
+        <ul class="dp-others-list">
+            <li>Pedidos personalizados</li>
+            <li>Tortas</li>
+            <li>Chocotejas</li>
+            <li>Postres para celebraciones</li>
+            <li>Detalles especiales</li>
+        </ul>
+
+        <a href="https://wa.me/51992433363?text=Hola,%20Dulces%20Pretextos.%20Tengo%20una%20idea%20para%20un%20detalle%20personalizado%20y%20quisiera%20consultar." target="_blank" class="dp-btn dp-btn-primary" style="background-color: var(--dp-blanco);">Cuéntanos tu idea</a>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="dp-testimonios" class="dp-section">
+        <h2 class="dp-section-title">Lo que dicen nuestros clientes</h2>
+        <p class="dp-section-subtitle">Cada pretexto compartido es una sonrisa garantizada.</p>
+        
+        <div class="dp-testimonials-grid">
+            <div class="dp-card" style="text-align: center;">
+                <div class="dp-stars">★★★★★</div>
+                <p>“Tu experiencia puede aparecer aquí.”</p>
+                <div class="dp-client-name">Nombre del cliente</div>
+            </div>
+            <div class="dp-card" style="text-align: center;">
+                <div class="dp-stars">★★★★★</div>
+                <p>“Tu experiencia puede aparecer aquí.”</p>
+                <div class="dp-client-name">Nombre del cliente</div>
+            </div>
+            <div class="dp-card" style="text-align: center;">
+                <div class="dp-stars">★★★★★</div>
+                <p>“Tu experiencia puede aparecer aquí.”</p>
+                <div class="dp-client-name">Nombre del cliente</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTAR - FORMULARIO CONECTADO A GOOGLE SHEETS Y WHATSAPP -->
+    <section id="dp-contacto" class="dp-section dp-contact">
+        <h2 class="dp-section-title">¿Cuál es tu pretexto hoy?</h2>
+        <p class="dp-section-subtitle">Cuéntanos qué quieres celebrar, agradecer o simplemente compartir. Completa tus datos o contáctanos directamente para agendar tu pedido.</p>
+        
+        <div class="dp-form-container">
+            <form id="dp-lead-form">
+                <div class="dp-form-group">
+                    <label class="dp-form-label" for="dp-nombre">Nombre Completo</label>
+                    <input type="text" id="dp-nombre" name="nombre" class="dp-form-control" placeholder="Ej: María García" required>
+                </div>
+                <div class="dp-form-group">
+                    <label class="dp-form-label" for="dp-telefono">WhatsApp / Teléfono</label>
+                    <input type="tel" id="dp-telefono" name="telefono" class="dp-form-control" placeholder="Ej: 992 433 363" required>
+                </div>
+                <div class="dp-form-group">
+                    <label class="dp-form-label" for="dp-producto">Producto o Pretexto</label>
+                    <select id="dp-producto" name="producto" class="dp-form-control">
+                        <option value="General">Consulta General / Detalle Especial</option>
+                        <option value="Mosaicos">Mosaicos (S/ 5.00)</option>
+                        <option value="Brownies">Brownies (S/ 5.00)</option>
+                        <option value="Donas">Donas (S/ 3.00)</option>
+                        <option value="Alfajores">Alfajores (S/ 2.00)</option>
+                        <option value="Torta de Chocolate">Torta de Chocolate (S/ 5.00)</option>
+                        <option value="Chocotejas">Chocotejas Personalizadas (S/ 2.00)</option>
+                        <option value="Piononos">Piononos (S/ 5.00)</option>
+                        <option value="Mousse de Maracuyá">Mousse de Maracuyá (S/ 5.00)</option>
+                        <option value="Mousse de Mango">Mousse de Mango (S/ 5.00)</option>
+                        <option value="Mousse de Chirimoya">Mousse de Chirimoya (S/ 5.00)</option>
+                        <option value="Pedido Personalizado">Pedido Personalizado / Evento</option>
+                    </select>
+                </div>
+                <div class="dp-form-group">
+                    <label class="dp-form-label" for="dp-mensaje">Detalles de tu pedido</label>
+                    <textarea id="dp-mensaje" name="mensaje" class="dp-form-control" rows="4" placeholder="Indícanos la cantidad, fecha deseada de entrega o dedicatoria especial..."></textarea>
+                </div>
+
+                <button type="submit" id="dp-submit-btn" class="dp-btn dp-btn-primary" style="width:100%; text-align: center;">Enviar Pedido por WhatsApp</button>
+                
+                <div id="dp-alert" class="dp-alert-success">
+                    ✅ ¡Gracias por tu interés! Abrimos tu WhatsApp...
+                </div>
+            </form>
+        </div>
+
+        <span class="dp-phone-display">WhatsApp directo: 992 433 363</span>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="dp-footer">
+        <h2>DULCES PRETEXTOS</h2>
+        <p>“Siempre hay un pretexto para compartir.”</p>
+        
+        <div class="dp-footer-links">
+            <a href="#dp-inicio" class="dp-menu-item">Inicio</a>
+            <span>|</span>
+            <a href="#dp-nosotros" class="dp-menu-item">Nosotros</a>
+            <span>|</span>
+            <a href="#dp-productos" class="dp-menu-item">Productos</a>
+            <span>|</span>
+            <a href="https://sites.google.com/view/blog-dp/blog" target="_blank" class="dp-menu-item">Blog</a>
+            <span>|</span>
+            <a href="#dp-otros" class="dp-menu-item">Otros</a>
+            <span>|</span>
+            <a href="#dp-contacto" class="dp-menu-item">Contactar</a>
+        </div>
+
+        <a href="https://sites.google.com/view/blog-dp/blog" target="_blank" class="dp-footer-blog">Visita nuestro Blog →</a>
+    </footer>
+
+    <!-- INTERACTIVIDAD & ENVO A APPS SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('dp-lead-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    var submitBtn = document.getElementById('dp-submit-btn');
+                    var alertBox = document.getElementById('dp-alert');
+                    
+                    var nombre = document.getElementById('dp-nombre').value;
+                    var telefono = document.getElementById('dp-telefono').value;
+                    var producto = document.getElementById('dp-producto').value;
+                    var mensaje = document.getElementById('dp-mensaje').value;
+
+                    // URL de tu Apps Script
+                    var scriptURL = 'https://script.google.com/macros/s/AKfycbx99B3lX-eC1iOsY2ta0rjaUd7_SRj3mv8YfimaGaxJ7As4cU1n33O7UtvV7eUjepxu7g/exec';
+
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerText = 'Enviando...';
+                    }
+                    if (alertBox) {
+                        alertBox.style.display = 'block';
+                    }
+
+                    var formData = new FormData();
+                    formData.append('nombre', nombre);
+                    formData.append('telefono', telefono);
+                    formData.append('producto', producto);
+                    formData.append('mensaje', mensaje);
+
+                    fetch(scriptURL, { method: 'POST', body: formData })
+                        .catch(function(err) {
+                            console.log('Guardado localmente', err);
+                        });
+
+                    var textWA = "Hola, Dulces Pretextos. Soy " + nombre + ". Quisiera pedir: " + producto + ".";
+                    if (mensaje.trim() !== '') {
+                        textWA += " Detalles: " + mensaje;
+                    }
+                    var urlWA = "https://wa.me/51992433363?text=" + encodeURIComponent(textWA);
+                    
+                    setTimeout(function() {
+                        window.open(urlWA, '_blank');
+                        form.reset();
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerText = 'Enviar Pedido por WhatsApp';
+                        }
+                    }, 500);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
